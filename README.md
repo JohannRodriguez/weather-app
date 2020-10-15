@@ -1,59 +1,37 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# Weather app
 
-> One paragraph statement about the project.
+> This is a project for [Microverse](https://www.microverse.org/) to build a weather app using the API of [OpenWeather](https://openweathermap.org/api/one-call-api?gclid=CjwKCAjw5p_8BRBUEiwAPpJO66hGtWEMQp-sFOjbLx1lYGr-OeCm3ReKl2HQMIunydKDoF5SzoMhTBoCw84QAvD_BwE) 
 
-![screenshot](./app_screenshot.png)
+![screenshot](./screenshot.png)
 
-Additional description about the project and its features.
+In this project, you can acces to the app and look for weather in any place in the world! You just have to type the desire counrty, city or state and the page will display the weather with its temperature, wich you can choose to be shown in Celcius, Fahrenheit or Kelvin.
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- HTML
+- CSS
+- JavaScript
+- webpack
 
 ## Live Demo
 
 [Live Demo Link](https://livedemo.com)
 
 
-## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
 To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
 
 ### Setup
 
-### Install
+- Clone this repository to your local machine and open it in a live server
 
-### Usage
+👤 **Johann Rodriguez**
 
-### Run tests
+- Github: [@JohannRodriguez](https://github.com/JohannRodriguez)
+- Twitter: [@BSapce](https://https://twitter.com/BSapce)
+- Linkedin: [Johann Rodríguez](https://www.linkedin.com/in/johann-alonso-rodr%C3%ADguez-v%C3%A1zquez-25b07719a/)
 
-### Deployment
-
-
-
-## Authors
-
-👤 **Author1**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
 
 ## 🤝 Contributing
 
