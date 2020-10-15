@@ -10,7 +10,9 @@ const getUrl = (getCity, getState) => {
     state: getState,
     key: '&APPID=a462784b129e8666735d11a68b50dc6c',
   };
-  const { root, city, state, key } = urlData;
+  const {
+    root, city, state, key
+  } = urlData;
 
   if (city.length === 0) {
     return `${root}${state}${key}`;
@@ -28,6 +30,8 @@ const errorHanlder = (err) => {
       message: 'City not found',
     }),
   );
+  err = response;
+  return err;
 };
 
 const newWeather = (weatherData, city, state, pref) => {
@@ -36,7 +40,8 @@ const newWeather = (weatherData, city, state, pref) => {
   const fahrenheitCalc = (celciusCalc * 9 ) / 5 + 32;
   const celcius = decimals(celciusCalc);
   const fahrenheit = decimals(fahrenheitCalc);
-  const description = weatherData.weather[0].description;
+  const { weather } = weatherData;
+  const description = weather[0].description;
   const icon = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
   return { city, state, kelvin, celcius, fahrenheit, pref, description, icon };
 };
@@ -46,7 +51,7 @@ const dataHandler = (data, city, state, pref) => {
     const weather = newWeather(data, city, state, pref);
     const userRequest = [weather, city, state, pref];
     localStorage.setItem('request', JSON.stringify(userRequest));
-    location.reload();
+    window.location.reload();
   } else {
     errorMsg(data.message);
   }
