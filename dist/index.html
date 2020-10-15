@@ -6,6 +6,26 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="error-msg">
+        <p id="error"></p>
+      </div>
+      <div id="page-content" class="weather">
+      </div>
+      <div class="forms">
+        <form>
+          <label for="city-name">City or country</label><br>
+          <input type="text" id="city-name" name="city-name" placeholder="City name"><br>
+          <label for="state-name">State (if you enter a country, this will be ignored)</label><br>
+          <input type="text" id="state-name" name="state-name" placeholder="State name"><br>
+          <label for="temp-type">Choose prefered temperature system (You can check the others anyway :D)</label><br>
+          <select name="temp-types" id="temp-types">
+            <option value="1">Celcius</option>
+            <option value="2">Fahrenheit</option>
+            <option value="3">Kelvin</option>
+          </select><br>
+          <button id="submit-form">Check weather</button>
+        </form>
+      </div>
     <script src="main.js"></script>
 </body>
 </html>
