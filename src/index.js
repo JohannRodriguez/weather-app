@@ -11,7 +11,7 @@ const getUrl = (getCity, getState) => {
     key: '&APPID=a462784b129e8666735d11a68b50dc6c',
   };
   const {
-    root, city, state, key
+    root, city, state, key,
   } = urlData;
 
   if (city.length === 0) {
@@ -37,13 +37,15 @@ const errorHanlder = (err) => {
 const newWeather = (weatherData, city, state, pref) => {
   const kelvin = weatherData.main.temp;
   const celciusCalc = (kelvin - 273.15);
-  const fahrenheitCalc = (celciusCalc * 9 ) / 5 + 32;
+  const fahrenheitCalc = (celciusCalc * 9) / 5 + 32;
   const celcius = decimals(celciusCalc);
   const fahrenheit = decimals(fahrenheitCalc);
   const { weather } = weatherData;
   const description = weather[0].description;
   const icon = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
-  return { city, state, kelvin, celcius, fahrenheit, pref, description, icon };
+  return {
+    city, state, kelvin, celcius, fahrenheit, pref, description, icon
+  };
 };
 
 const dataHandler = (data, city, state, pref) => {
