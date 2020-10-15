@@ -9,15 +9,14 @@ const getUrl = (getCity, getState) => {
     city: getCity,
     state: getState,
     key: '&APPID=a462784b129e8666735d11a68b50dc6c'
-  }
-  const {root, city, state, key} = urlData;
+  };
+  const { root, city, state, key } = urlData;
   if (city.length === 0) {
     return `${root}${state}${key}`;
   } else if (state.length === 0) {
-    return `${root}${city}${key}`
-  } else {
-    return `${root}${city},${state}${key}`
+    return `${root}${city}${key}`;
   }
+    return `${root}${city},${state}${key}`;
 };
 
 const submitBtn = document.getElementById('submit-form');

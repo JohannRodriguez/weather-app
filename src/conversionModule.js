@@ -1,21 +1,17 @@
-const cap = (string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+const cap = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
 const convertNull = (string) => {
-  if(string === null){
+  if (string === null){
     return '';
-  } else {
-    return string;
   }
+  return string;
 };
 
 const decimals = (number) => {
-  if(number % 1 !== 0) {
+  if (number % 1 !== 0) {
     return parseFloat(number.toFixed(2));
-  } else {
-    return number
   }
+  return number
 };
 
 export { cap, convertNull, decimals };

@@ -1,35 +1,41 @@
+import { cap } from './conversionModule';
+
 const dataTypeSet = (type, compare) => {
-    if(type === compare) {
-      return 'temp-switch';
-    } else {
-      return 'temp-switch temp-click';
-    }
-  };
+  if (type === compare) {
+    return 'temp-switch';
+  }
+  return 'temp-switch temp-click';
+};
 
 const showTemp = (data) => {
   switch (data.pref) {
     case '1':
-      return `${data.celcius} °C`
+      return `${data.celcius} °C`;
     case '2':
-      return `${data.fahrenheit} °F`
+      return `${data.fahrenheit} °F`;
     case '3':
-      return `${data.kelvin} °K`
+      return `${data.kelvin} °K`;
+    default:
+    return 'Not found';
   }
 };
 
 const placeValues = (city, state) => {
-  if(state.length === 0) {
-    return `The weather in ${city} is:`
+  if (state.length === 0) {
+    return `The weather in ${city} is:`;
   } else if (city.length === 0) {
-    return `The weather in ${cap(state)} is:`
+    return `The weather in ${cap(state)} is:`;
   } else {
-    return location.textContent = `The weather in ${city}, ${cap(state)} is:`
+    return location.textContent = `The weather in ${city}, ${cap(state)} is:`;
   }
 };
 
-const cap = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+  
+const resetClasses = (tempsSwitch) => {
+  tempsSwitch.forEach(temps => {
+    temps.classList.add('temp-click');
+  });
+};
 
 const dom = (weatherData) => {
   const pageContent = document.getElementById('page-content');
@@ -104,12 +110,6 @@ const convertTemp = (data) => {
           break;
       }
     });
-  });
-};
-  
-const resetClasses = (tempsSwitch) => {
-  tempsSwitch.forEach(temps => {
-    temps.classList.add('temp-click');
   });
 };
 
