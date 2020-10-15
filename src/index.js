@@ -172,3 +172,38 @@ const showWeather = (data) => {
 };
 
 showWeather(request);
+
+const convertTemp = (data) => {
+  const tempsSwitch = document.querySelectorAll('.temp-switch');
+  tempsSwitch.forEach(temps => {
+    temps.addEventListener('click', () => {
+      const tempTypeData = temps.dataset.type;
+      const temp = document.getElementById('temp');
+      switch(tempTypeData) {
+        case 'celcius':
+          temp.textContent = `${data.celcius} C°`;
+          resetClasses(tempsSwitch);
+          temps.classList.remove('temp-click');
+          break;
+        case 'kelvin':
+          temp.textContent = `${data.kelvin} K°`;
+          resetClasses(tempsSwitch);
+          temps.classList.remove('temp-click');
+          break;
+        case 'fahrenheit':
+          temp.textContent = `${data.fahrenheit} F°`;
+          resetClasses(tempsSwitch);
+          temps.classList.remove('temp-click');
+          break;
+      }
+    });
+  });
+};
+
+const resetClasses = (tempsSwitch) => {
+  tempsSwitch.forEach(temps => {
+    temps.classList.add('temp-click');
+  });
+};
+
+convertTemp(request[0]);
