@@ -55,11 +55,23 @@ const errorHanlder = (err) => {
 
 const dataHandler = (data, city, state, pref) => {
   if (data.cod === 200) {
-    const userRequest = [city, state, pref];
+    const weather = newWeather(data, city, state, pref);
+    const userRequest = [weather, city, state, pref];
     localStorage.setItem('request', JSON.stringify(userRequest));
     location.reload();
   } else {
     const err = document.getElementById('error');
     err.textContent = cap(data.message);
   }
+};
+
+const newWeather = (weatherData, city, state, pref) => {
+  const kelvin = weatherData.main.temp;
+  const celciusCalc = (kelvin - 273.15);
+  const fahrenheitCalc = celciusCalc * 9 / 5 + 32;
+  const celcius = decimals(celciusCalc);
+  const fahrenheit = decimals(fahrenheitCalc);
+  const description = weatherData.weather[0].description;
+  const icon = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
+  return { city, state, kelvin, celcius, fahrenheit, pref, description, icon };
 };
