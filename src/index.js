@@ -36,4 +36,30 @@ submitBtn.addEventListener('click', (event) => {
   const city = convertNull(getCity);
   const state = convertNull(getState);
   const url = getUrl(city, state);
+  getWeather(url, getCity, getState, getPref);
 });
+
+const getWeather = async (url, city, state, pref) => {
+  const data = await ( await fetch(url, {mode: 'cors'}).catch(errorHanlder)).json();
+  dataHandler(data, city, state, pref);
+};
+
+const errorHanlder = (err) => {
+  const response = new Response(
+    JSON.stringify({
+      cod: 404,
+      message: 'City not found'
+    })
+  );
+};
+
+const dataHandler = (data, city, state, pref) => {
+  if (data.cod === 200) {
+    const userRequest = [city, state, pref];
+    localStorage.setItem('request', JSON.stringify(userRequest));
+    location.reload();
+  } else {
+    const err = document.getElementById('error');
+    err.textContent = cap(data.message);
+  }
+};
