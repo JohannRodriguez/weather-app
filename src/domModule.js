@@ -113,4 +113,11 @@ const resetClasses = (tempsSwitch) => {
   });
 };
 
-  export { dom, convertTemp };
+const errorMsg = (message) => {
+  const err = document.getElementById('error');
+  err.textContent = `Error: ${cap(message)}`;
+  const holder = document.querySelector('.error-msg');
+  holder.classList.remove('invisible');
+};
+
+export { dom, convertTemp, errorMsg };

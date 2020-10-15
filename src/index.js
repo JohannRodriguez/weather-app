@@ -1,4 +1,4 @@
-import { dom, convertTemp } from './domModule';
+import { dom, convertTemp, errorMsg } from './domModule';
 import { cap, convertNull, decimals } from './conversionModule';
 
 const request = JSON.parse(localStorage.getItem('request')) || [];
@@ -53,8 +53,7 @@ const dataHandler = (data, city, state, pref) => {
     localStorage.setItem('request', JSON.stringify(userRequest));
     location.reload();
   } else {
-    const err = document.getElementById('error');
-    err.textContent = cap(data.message);
+    errorMsg(data.message);
   }
 };
 
