@@ -42,7 +42,7 @@ const newWeather = (weatherData, city, state, pref) => {
   const fahrenheit = decimals(fahrenheitCalc);
   const { weather } = weatherData;
   const [first] = weather;
-  const description = first.description;
+  const { description } = first;
   const icon = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
   return {
     city, state, kelvin, celcius, fahrenheit, pref, description, icon,
