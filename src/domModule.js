@@ -88,17 +88,17 @@ const convertTemp = (data) => {
       const temp = document.getElementById('temp');
       switch(tempTypeData) {
         case 'celcius':
-          temp.textContent = `${data.celcius} C°`;
+          temp.textContent = `${data.celcius} °C`;
           resetClasses(tempsSwitch);
           temps.classList.remove('temp-click');
           break;
         case 'kelvin':
-          temp.textContent = `${data.kelvin} K°`;
+          temp.textContent = `${data.kelvin} °K`;
           resetClasses(tempsSwitch);
           temps.classList.remove('temp-click');
           break;
         case 'fahrenheit':
-          temp.textContent = `${data.fahrenheit} F°`;
+          temp.textContent = `${data.fahrenheit} °F`;
           resetClasses(tempsSwitch);
           temps.classList.remove('temp-click');
           break;
