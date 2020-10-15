@@ -109,7 +109,7 @@ const convertTemp = (data) => {
           temps.classList.remove('temp-click');
           break;
         default:
-          'Not found';
+          temp.textContent = 'Not found';
       }
     });
   });

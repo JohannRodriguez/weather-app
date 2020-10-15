@@ -21,11 +21,19 @@ const getUrl = (getCity, getState) => {
   return `${root}${city},${state}${key}`;
 };
 
+const errorHanlder = (err) => {
+  const response = new Response(
+    JSON.stringify({
+      cod: 404,
+      message: 'City not found',
+    }),
+  );
+};
 
 const newWeather = (weatherData, city, state, pref) => {
   const kelvin = weatherData.main.temp;
   const celciusCalc = (kelvin - 273.15);
-  const fahrenheitCalc = celciusCalc * 9 / 5 + 32;
+  const fahrenheitCalc = (celciusCalc * 9 ) / 5 + 32;
   const celcius = decimals(celciusCalc);
   const fahrenheit = decimals(fahrenheitCalc);
   const description = weatherData.weather[0].description;
@@ -45,7 +53,7 @@ const dataHandler = (data, city, state, pref) => {
 };
 
 const getWeather = async (url, city, state, pref) => {
-  const data = await ( await fetch(url, {mode: 'cors'}).catch(errorHanlder)).json();
+  const data = await (await fetch(url, { mode: 'cors' }).catch(errorHanlder)).json();
   dataHandler(data, city, state, pref);
 };
 
@@ -60,15 +68,6 @@ submitBtn.addEventListener('click', (event) => {
   const url = getUrl(city, state);
   getWeather(url, getCity, getState, getPref);
 });
-
-const errorHanlder = (err) => {
-  const response = new Response(
-    JSON.stringify({
-      cod: 404,
-      message: 'City not found'
-    })
-  );
-};
 
 dom(request[0]);
 convertTemp(request[0]);
