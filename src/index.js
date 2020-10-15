@@ -8,15 +8,45 @@ const getUrl = (getCity, getState) => {
     root: 'http://api.openweathermap.org/data/2.5/weather?q=',
     city: getCity,
     state: getState,
-    key: '&APPID=a462784b129e8666735d11a68b50dc6c'
+    key: '&APPID=a462784b129e8666735d11a68b50dc6c',
   };
   const { root, city, state, key } = urlData;
+
   if (city.length === 0) {
     return `${root}${state}${key}`;
-  } else if (state.length === 0) {
+  }
+  if (state.length === 0) {
     return `${root}${city}${key}`;
   }
-    return `${root}${city},${state}${key}`;
+  return `${root}${city},${state}${key}`;
+};
+
+
+const newWeather = (weatherData, city, state, pref) => {
+  const kelvin = weatherData.main.temp;
+  const celciusCalc = (kelvin - 273.15);
+  const fahrenheitCalc = celciusCalc * 9 / 5 + 32;
+  const celcius = decimals(celciusCalc);
+  const fahrenheit = decimals(fahrenheitCalc);
+  const description = weatherData.weather[0].description;
+  const icon = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
+  return { city, state, kelvin, celcius, fahrenheit, pref, description, icon };
+};
+
+const dataHandler = (data, city, state, pref) => {
+  if (data.cod === 200) {
+    const weather = newWeather(data, city, state, pref);
+    const userRequest = [weather, city, state, pref];
+    localStorage.setItem('request', JSON.stringify(userRequest));
+    location.reload();
+  } else {
+    errorMsg(data.message);
+  }
+};
+
+const getWeather = async (url, city, state, pref) => {
+  const data = await ( await fetch(url, {mode: 'cors'}).catch(errorHanlder)).json();
+  dataHandler(data, city, state, pref);
 };
 
 const submitBtn = document.getElementById('submit-form');
@@ -31,11 +61,6 @@ submitBtn.addEventListener('click', (event) => {
   getWeather(url, getCity, getState, getPref);
 });
 
-const getWeather = async (url, city, state, pref) => {
-  const data = await ( await fetch(url, {mode: 'cors'}).catch(errorHanlder)).json();
-  dataHandler(data, city, state, pref);
-};
-
 const errorHanlder = (err) => {
   const response = new Response(
     JSON.stringify({
@@ -43,28 +68,6 @@ const errorHanlder = (err) => {
       message: 'City not found'
     })
   );
-};
-
-const dataHandler = (data, city, state, pref) => {
-  if (data.cod === 200) {
-    const weather = newWeather(data, city, state, pref);
-    const userRequest = [weather, city, state, pref];
-    localStorage.setItem('request', JSON.stringify(userRequest));
-    location.reload();
-  } else {
-    errorMsg(data.message);
-  }
-};
-
-const newWeather = (weatherData, city, state, pref) => {
-  const kelvin = weatherData.main.temp;
-  const celciusCalc = (kelvin - 273.15);
-  const fahrenheitCalc = celciusCalc * 9 / 5 + 32;
-  const celcius = decimals(celciusCalc);
-  const fahrenheit = decimals(fahrenheitCalc);
-  const description = weatherData.weather[0].description;
-  const icon = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
-  return { city, state, kelvin, celcius, fahrenheit, pref, description, icon };
 };
 
 dom(request[0]);

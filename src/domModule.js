@@ -16,21 +16,21 @@ const showTemp = (data) => {
     case '3':
       return `${data.kelvin} °K`;
     default:
-    return 'Not found';
+      return 'Not found';
   }
 };
 
 const placeValues = (city, state) => {
   if (state.length === 0) {
     return `The weather in ${city} is:`;
-  } else if (city.length === 0) {
-    return `The weather in ${cap(state)} is:`;
-  } else {
-    return location.textContent = `The weather in ${city}, ${cap(state)} is:`;
   }
+  if (city.length === 0) {
+    return `The weather in ${cap(state)} is:`;
+  }
+  return `The weather in ${city}, ${cap(state)} is:`;
 };
 
-  
+
 const resetClasses = (tempsSwitch) => {
   tempsSwitch.forEach(temps => {
     temps.classList.add('temp-click');
@@ -42,7 +42,7 @@ const dom = (weatherData) => {
   const fragment = document.createDocumentFragment();
   const location = document.createElement('h1');
   location.textContent = placeValues(weatherData.city, weatherData.state);
- 
+
   const temp = document.createElement('span');
   temp.id = 'temp';
   temp.textContent = showTemp(weatherData);
@@ -92,7 +92,7 @@ const convertTemp = (data) => {
     temps.addEventListener('click', () => {
       const tempTypeData = temps.dataset.type;
       const temp = document.getElementById('temp');
-      switch(tempTypeData) {
+      switch (tempTypeData) {
         case 'celcius':
           temp.textContent = `${data.celcius} °C`;
           resetClasses(tempsSwitch);
@@ -108,6 +108,8 @@ const convertTemp = (data) => {
           resetClasses(tempsSwitch);
           temps.classList.remove('temp-click');
           break;
+        default:
+          'Not found';
       }
     });
   });
