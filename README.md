@@ -15,6 +15,10 @@ In this project, you can acces to the app and look for weather in any place in t
 - JavaScript
 - webpack
 
+## Live version
+
+[Weather app](https://johannrodriguez.github.io/weather-app/)
+
 To get a local copy up and running follow these simple example steps.
 
 ### Running Locally
