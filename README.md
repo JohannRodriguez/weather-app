@@ -15,11 +15,6 @@ In this project, you can acces to the app and look for weather in any place in t
 - JavaScript
 - webpack
 
-## Live Demo
-
-[Live Demo Link](https://livedemo.com)
-
-
 To get a local copy up and running follow these simple example steps.
 
 ### Running Locally
