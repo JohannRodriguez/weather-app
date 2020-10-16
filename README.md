@@ -22,9 +22,20 @@ In this project, you can acces to the app and look for weather in any place in t
 
 To get a local copy up and running follow these simple example steps.
 
-### Setup
+### Running Locally
 
-- Clone this repository to your local machine and open it in a live server
+Clone the repo:
+```
+git clone https://github.com/ricardo123321/Restaurant-Page.git
+```
+Inside the root folder of the project, install the node packages:
+```
+npm install
+```
+Go to the root folder and run the npm build script:
+```
+npm run build
+```
 
 👤 **Johann Rodriguez**
 
