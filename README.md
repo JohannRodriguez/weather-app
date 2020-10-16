@@ -35,6 +35,10 @@ Go to the root folder and run the npm build script:
 ```
 npm run build
 ```
+Then use: 
+```
+npm run dev
+```
 
 👤 **Johann Rodriguez**
 
