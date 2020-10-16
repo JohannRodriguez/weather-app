@@ -5,7 +5,7 @@ const request = JSON.parse(localStorage.getItem('request')) || [];
 
 const getUrl = (getCity, getState) => {
   const urlData = {
-    root: 'http://api.openweathermap.org/data/2.5/weather?q=',
+    root: 'https://api.openweathermap.org/data/2.5/weather?q=',
     city: getCity,
     state: getState,
     key: '&APPID=a462784b129e8666735d11a68b50dc6c',
@@ -43,7 +43,7 @@ const newWeather = (weatherData, city, state, pref) => {
   const { weather } = weatherData;
   const [first] = weather;
   const { description } = first;
-  const icon = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
+  const icon = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
   return {
     city, state, kelvin, celcius, fahrenheit, pref, description, icon,
   };
