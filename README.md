@@ -23,7 +23,7 @@ Clone the repo:
 ```
 git clone git@github.com:JohannRodriguez/weather-app.git
 ```
-Inside the root folder of the project, install the node packages:
+Inside the root folder of the project install the node packages:
 ```
 npm install
 ```
