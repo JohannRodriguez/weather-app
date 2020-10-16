@@ -21,7 +21,7 @@ To get a local copy up and running follow these simple example steps.
 
 Clone the repo:
 ```
-git clone https://github.com/ricardo123321/Restaurant-Page.git
+git clone git@github.com:JohannRodriguez/weather-app.git
 ```
 Inside the root folder of the project, install the node packages:
 ```
